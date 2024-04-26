@@ -1,4 +1,4 @@
-import Post, { PostProps } from "../../components/post"
+import Post from "../../components/post"
 import prisma from "../../lib/prisma"
 import styles from "../../styles/home.module.css"
 
@@ -23,7 +23,7 @@ const Blog = async() => {
 
   return (
     <div className={styles.page}>
-      <h1>Public Feed</h1>
+      <h1 className="text-3xl font-bold underline">Public Feed</h1>
       <main>
         {posts.map((post) => (
           <div key={post.id} className={styles.post}>

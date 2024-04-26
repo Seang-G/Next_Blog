@@ -1,8 +1,8 @@
 import styles from "../../styles/drafts.module.css"
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route';
 import prisma from "../../lib/prisma";
 import Post from "../../components/post";
+import { authOptions } from "../../lib/auth";
 
 async function getDrafts() {
   const session = await getServerSession(authOptions);
