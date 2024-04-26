@@ -1,0 +1,37 @@
+/* .bold {
+  font-weight: bold;
+}
+
+.header a {
+  text-decoration: none;
+  color: var(--geist-foreground);
+  display: inline-block;
+}
+
+.left a[data-active='true'] {
+  color: gray;
+}
+
+.header a + a {
+  margin-left: 1rem;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.right a {
+  border: 1px solid var(--geist-foreground);
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
+
+.header button {
+  border: none;
+}
+
+.header nav {
+  display: flex;
+  padding: 2rem;
+  align-items: center;
+} */
