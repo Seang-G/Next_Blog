@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
-import styles from "../styles/header.module.css";
+// import styles from "../styles/header.module.css";
 import { usePathname } from 'next/navigation';
 
 const Header = () => {
@@ -14,7 +14,7 @@ const Header = () => {
 
   let left = (
     <div className="left">
-      <Link href="/" className={styles.bold} data-activate={isActive('/')}>
+      <Link href="/" data-activate={isActive('/')}>
           Feed
       </Link>
     </div>
@@ -25,13 +25,13 @@ const Header = () => {
   if (status === 'loading') {
     left = (
       <div className="left">
-        <Link href="/" className={styles.bold} data-active={isActive('/')}>
+        <Link href="/" data-active={isActive('/')}>
             Feed
         </Link>
       </div>
     );
     right = (
-      <div className={styles.right}>
+      <div>
         <p>Validating session ...</p>
       </div>
     );
@@ -39,7 +39,7 @@ const Header = () => {
 
   if (!session) {
     right = (
-      <div className={styles.right}>
+      <div>
         <Link href="/api/auth/signin" data-active={isActive('/signup')}>
           Log in
         </Link>
@@ -49,8 +49,8 @@ const Header = () => {
 
   if (session) {
     left = (
-      <div className={styles.left}>
-        <Link href="/" className={styles.bold} data-active={isActive('/')}>
+      <div>
+        <Link href="/" data-active={isActive('/')}>
             Feed
         </Link>
         <Link href="/drafts" data-active={isActive('/drafts')}>
@@ -59,7 +59,7 @@ const Header = () => {
       </div>
     );
     right = (
-      <div className={styles.right}>
+      <div>
         <p>
           {session.user.name} ({session.user.email})
         </p>
@@ -76,7 +76,7 @@ const Header = () => {
   }
 
   return (
-    <nav className={styles.header}>
+    <nav>
       {left}
       {right}
     </nav>

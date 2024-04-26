@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import styles from "../styles/post.module.css"
+// import styles from "../styles/post.module.css"
 
 export type PostProps = {
   id: string;
@@ -13,10 +13,10 @@ export type PostProps = {
   published: boolean;
 };
 
-const PostPage = ({ post }: { post: PostProps }) => {
+const Post = ({ post }: { post: PostProps }) => {
   const authorName = post.author ? post.author.name : "Unknown author";
   return (
-    <Link href={`/p/${post.id}`} className={styles.post}>
+    <Link href={`/p/${post.id}`}>
       <h2>{post.title}</h2>
       <small>By {authorName}</small>
       <ReactMarkdown>
@@ -26,4 +26,4 @@ const PostPage = ({ post }: { post: PostProps }) => {
   );
 };
 
-export default PostPage;
+export default Post;

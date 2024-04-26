@@ -1,12 +1,12 @@
 'use client'
 import ReactMarkdown from 'react-markdown';
-import {redirect, useRouter} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 import { PostProps } from '../../../components/post';
-import styles from "../../../styles/p.module.css"
+// import styles from "../../../styles/p.module.css"
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
-const Post = ({params: {id}}: {params: {id: string}}) => {
+const PostPage = ({params: {id}}: {params: {id: string}}) => {
   const [post, setPost] = useState<null|PostProps>(null);
   const [isOwner, setIsOwner] = useState(false);
   const {data:session} = useSession();
@@ -50,7 +50,7 @@ const Post = ({params: {id}}: {params: {id: string}}) => {
   }, [post])
 
   return (
-    <div className={styles.p}>
+    <div>
       {isOwner&&<div>
         <h2>{post.title} {!post.published&&"(Draft)"}</h2>
         <p>By {post?.author?.name || 'Unknown author'}</p>
@@ -74,4 +74,4 @@ const Post = ({params: {id}}: {params: {id: string}}) => {
   );
 };
 
-export default Post;
+export default PostPage;

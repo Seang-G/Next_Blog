@@ -2,7 +2,7 @@
 
 import Router from 'next/router';
 import {useState} from 'react';
-import styles from "../../styles/create.module.css"
+// import styles from "../../styles/create.module.css"
 import { useRouter } from 'next/navigation';
 
 const Draft = () => {
@@ -26,7 +26,7 @@ const Draft = () => {
   };
 
   return (
-    <div className={styles.create}>
+    <div>
       <form onSubmit={submitData}>
         <h1>New Draft</h1>
         <input
@@ -44,7 +44,7 @@ const Draft = () => {
           value={content}
         />
         <input disabled={!content || !title} type="submit" value="Create" />
-        <a className={styles.back} href="#" onClick={() => Router.push('/')}>
+        <a href="#" onClick={() => Router.push('/')}>
           or Cancel
         </a>
       </form>

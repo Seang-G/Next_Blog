@@ -1,6 +1,6 @@
 import Post from "../../components/post"
 import prisma from "../../lib/prisma"
-import styles from "../../styles/home.module.css"
+// import styles from "../../styles/home.module.css"
 
 export const revalidate = 10;
 
@@ -22,11 +22,11 @@ const Blog = async() => {
   const posts = await getPosts();
 
   return (
-    <div className={styles.page}>
+    <div>
       <h1 className="text-3xl font-bold underline">Public Feed</h1>
       <main>
         {posts.map((post) => (
-          <div key={post.id} className={styles.post}>
+          <div key={post.id}>
             <Post post={post} />
           </div>
         ))}

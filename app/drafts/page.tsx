@@ -1,4 +1,4 @@
-import styles from "../../styles/drafts.module.css"
+// import styles from "../../styles/drafts.module.css"
 import { getServerSession } from 'next-auth';
 import prisma from "../../lib/prisma";
 import Post from "../../components/post";
@@ -25,11 +25,11 @@ const Drafts = async() => {
   const drafts = await getDrafts();
 
   return (
-    <div className={styles.page}>
+    <div>
       <h1>My Drafts</h1>
       <main>
         {drafts.map((post) => (
-          <div key={post.id} className={styles.post}>
+          <div key={post.id}>
             <Post post={post} />
           </div>
         ))}
