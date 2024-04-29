@@ -22,15 +22,10 @@ const Blog = async() => {
   const posts = await getPosts();
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Public Feed</h1>
-      <main>
-        {posts.map((post) => (
-          <div key={post.id}>
-            <Post post={post} />
-          </div>
-        ))}
-      </main>
+    <div className="w-5/6 h-[80vh]  bg-black bg-opacity-15 my-10 mx-auto rounded-lg flex flex-col justify-start gap-10 p-10 overflow-y-scroll scroll-">
+      {posts.map((post) => (
+        <Post post={post} key={post.id}/>
+      ))}
     </div>
   )
 }
