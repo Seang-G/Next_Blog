@@ -25,15 +25,16 @@ const Drafts = async() => {
   const drafts = await getDrafts();
 
   return (
-    <div>
-      <h1>My Drafts</h1>
-      <main>
-        {drafts.map((post) => (
-          <div key={post.id}>
-            <Post post={post} />
+    <div className="w-5/6 h-[80vh]  bg-black bg-opacity-15 my-10 mx-auto rounded-lg flex flex-col justify-start gap-3 p-10 overflow-y-scroll">
+      {drafts.map((post) => (
+        <div key={post.id} className="flex h-[23%] gap-5">
+          <Post post={post} />
+          <div className='flex flex-col gap-5 justify-center items-center'>
+            <div className='bg-emerald-500 bg-opacity-30 p-3 rounded-lg w-20 text-center cursor-pointer hover:bg-opacity-100 transition-[background-color]'>Publish</div>
+            <div className='bg-rose-500 bg-opacity-30 p-3 rounded-lg w-20 text-center cursor-pointer hover:bg-opacity-100 transition-[background-color]'>Delete</div>
           </div>
-        ))}
-      </main>
+        </div>
+      ))}
     </div>
   );
 };

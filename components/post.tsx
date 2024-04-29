@@ -16,10 +16,10 @@ export type PostProps = {
 const Post = ({ post }: { post: PostProps }) => {
   const authorName = post.author ? post.author.name : "Unknown author";
   return (
-    <div className="bg-gradient-to-r from-rose-700/30 to-black/30 w-5/6 h-1/5 rounded-2xl py-5 px-10 flex justify-between mb-3 overflow-hidden">
+    <div className="bg-gradient-to-r from-rose-500/30 to-black/30 w-[90%] h-full rounded-3xl py-5 px-10 flex justify-between mb-3 overflow-hidden shadow-xl">
       <div>
         <Link href={`/p/${post.id}`} className="text-4xl font-bold">{post.title}</Link>
-        <ReactMarkdown className="text-xl pl-5">
+        <ReactMarkdown className="text-xl pl-5 mt-2">
           {post.content}
         </ReactMarkdown>
       </div>

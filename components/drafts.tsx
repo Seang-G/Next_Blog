@@ -44,30 +44,13 @@ const Drafts = (props: Props) => {
 
   return (
     <div>
-      <div className="page">
-        <h1>My Drafts</h1>
-        <main>
-          {props.drafts.map((post) => (
-            <div key={post.id} className="post">
-              <Post post={post} />
-            </div>
-          ))}
-        </main>
-      </div>
-      <style jsx>{`
-        .post {
-          background: var(--geist-background);
-          transition: box-shadow 0.1s ease-in;
-        }
-
-        .post:hover {
-          box-shadow: 1px 1px 3px #aaa;
-        }
-
-        .post + .post {
-          margin-top: 2rem;
-        }
-      `}</style>
+      <main>
+        {props.drafts.map((post) => (
+          <div key={post.id}>
+            <Post post={post} />
+          </div>
+        ))}
+      </main>
     </div>
   );
 };

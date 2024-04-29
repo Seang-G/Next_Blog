@@ -11,7 +11,7 @@ import { Josefin_Sans } from 'next/font/google';
 const urlToName = {
   '': "Public Feed",
   'p': "Public Feed",
-  'create': "Write",
+  'create': "Write New",
   'drafts': "Drafts",
 }
 
@@ -34,17 +34,18 @@ const Header = () => {
       <div className='justify-end w-full flex items-center gap-5'>
         {session?
         <div className='inline-flex justify-around gap-3'>
-          <Link href={"/"} className='bg-black bg-opacity-30 rounded-md px-2 py-1 cursor-pointer'>My page</Link>
-          <Link href={"/drafts"} className='bg-black bg-opacity-30 rounded-md px-2 py-1 cursor-pointer'>Drafts</Link>
+          <Link href={"/create"} className='bg-emerald-500 bg-opacity-70 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100'>+ New</Link>
+          <Link href={"/drafts"} className='bg-black bg-opacity-30 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100'>Drafts</Link>
+          <Link href={"/"} className='bg-black bg-opacity-30 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100'>My page</Link>
           <div 
-          className='bg-rose-500 bg-opacity-70 rounded-md px-2 py-1 cursor-pointer' 
+          className='bg-rose-500 bg-opacity-70 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100' 
           onClick={()=>signOut()}>Log out
           </div>
         </div>:
         <div>
           <Link 
           href={"/api/auth/signin"}
-          className='bg-emerald-500 bg-opacity-70 rounded-md px-2 py-1 cursor-pointer' 
+          className='bg-emerald-500 bg-opacity-70 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100' 
           >Log in
           </Link>
         </div>}  

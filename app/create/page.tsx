@@ -28,7 +28,6 @@ const Draft = () => {
   return (
     <div>
       <form onSubmit={submitData}>
-        <h1>New Draft</h1>
         <input
           autoFocus
           onChange={(e) => setTitle(e.target.value)}
