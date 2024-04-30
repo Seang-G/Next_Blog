@@ -26,7 +26,7 @@ const WritePage = () => {
   };
 
   return (
-    <form onSubmit={submitData} className='bg-black bg-opacity-30 min-h-[100vh] flex flex-col gap-1 py-10 px-20'>
+    <form onSubmit={submitData} className='flex flex-col gap-1 py-14 px-20'>
       <input
         autoFocus
         onChange={(e) => setTitle(e.target.value)}
@@ -39,7 +39,7 @@ const WritePage = () => {
         cols={50}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Content"
-        rows={8}
+        rows={24}
         value={content}
         className='text-md p-3 rounded-b-xl bg-white bg-opacity-10'
       />

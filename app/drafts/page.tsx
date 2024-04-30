@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import prisma from "../../lib/prisma";
 import Post from "../../components/post/post";
 import { authOptions } from "../../lib/auth";
+import PostBtns from '../../components/post/post-btns';
 
 async function getDrafts() {
   const session = await getServerSession(authOptions);
@@ -13,7 +14,7 @@ async function getDrafts() {
     },
     include: {
       author: {
-        select: { name: true },
+        select: { name: true, image: true },
       },
     },
   });
@@ -25,7 +26,7 @@ const Drafts = async() => {
   const drafts = await getDrafts();
 
   return (
-    <div className="w-5/6 h-[80vh]  bg-black bg-opacity-15 my-10 mx-auto rounded-lg flex flex-col justify-start gap-4 p-10 overflow-y-scroll">
+    <div className="w-5/6 h-[80vh] my-10 mx-auto rounded-lg flex flex-col justify-start gap-4 p-10">
       {drafts.map((post) => (
         <div key={post.id} className="flex h-[23%] gap-5">
           <Post post={post} />

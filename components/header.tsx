@@ -14,6 +14,7 @@ const urlToName = {
   'p': "Public Feed",
   'create': "Write New",
   'drafts': "Drafts",
+  'user': "My Page"
 }
 
 const josefinSans = Josefin_Sans({subsets:['latin']});
@@ -36,7 +37,7 @@ const Header = () => {
         <div className='inline-flex justify-around gap-3'>
           <Link href={"/create"} className='bg-emerald-500 bg-opacity-70 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100'>+ New</Link>
           <Link href={"/drafts"} className='bg-black bg-opacity-30 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100'>Drafts</Link>
-          <Link href={"/"} className='bg-black bg-opacity-30 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100'>My page</Link>
+          <Link href={"/user"} className='bg-black bg-opacity-30 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100'>My page</Link>
           <div 
           className='bg-rose-500 bg-opacity-70 rounded-md px-2 py-1 cursor-pointer transition-[background-color] hover:bg-opacity-100' 
           onClick={()=>signOut()}>Log out
