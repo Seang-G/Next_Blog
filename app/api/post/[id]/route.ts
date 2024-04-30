@@ -16,7 +16,7 @@ export async function GET(req, {params: {id}}) {
     },
     include: {
       author: {
-        select: { name: true, email: true },
+        select: { name: true, email: true, image: true },
       },
     },
   });

@@ -6,6 +6,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Josefin_Sans } from 'next/font/google';
+import Image from 'next/image';
 // import { josefinSans } from '../app/layout';
 
 const urlToName = {
@@ -23,12 +24,11 @@ const Header = () => {
   const pathname = usePathname();
 
   useEffect(()=>{
-    console.log(pathname)
     setPageName(urlToName[pathname.split("/")[1]])
   }, [pathname])
 
   return (
-    <div className='w-full h-20 backdrop-blur-sm bg-white bg-opacity-[4%] border-b-2 border-white border-opacity-10 grid grid-cols-3 place-items-center px-20'>
+    <div className='w-full h-20 backdrop-blur-sm bg-white bg-opacity-[4%] border-b-2 border-white border-opacity-10 grid grid-cols-3 place-items-center px-20 fixed top-0'>
       <div className='w-full'><Link href={"/"} className={`${josefinSans.className} text-2xl w-fit`}>Next-Blog</Link></div>
       <div className='text-center bg-gradient-to-r from-white to-[#F96262] text-transparent bg-clip-text text-4xl font-black'>{pageName}</div>
       <div className='justify-end w-full flex items-center gap-5'>
@@ -49,7 +49,11 @@ const Header = () => {
           >Log in
           </Link>
         </div>}  
-        <div className='material-symbols-outlined cursor-pointer'><span className='text-4xl'>account_circle</span></div>
+        {session?
+        <Image className='rounded-full' src={session.user.image} alt='user_image' width={50} height={50}/>
+        :<div className='material-symbols-outlined'><span className='text-4xl'>account_circle</span></div>
+        }
+        
       </div>
     </div>
   )

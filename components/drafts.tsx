@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import { useSession, getSession } from 'next-auth/react';
-import Post, { PostProps } from './post';
+import Post, { PostProps } from './post/post';
 import prisma from '../lib/prisma';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     },
     include: {
       author: {
-        select: { name: true },
+        select: { name: true, image: true },
       },
     },
   });

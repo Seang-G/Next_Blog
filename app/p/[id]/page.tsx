@@ -1,75 +1,38 @@
-'use client'
-import ReactMarkdown from 'react-markdown';
-import {useRouter} from 'next/navigation';
-import { PostProps } from '../../../components/post';
-// import styles from "../../../styles/p.module.css"
-import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../../../lib/auth';
+import prisma from '../../../lib/prisma';
+import PostArticle from '../../../components/post/post-article';
+import PostBtns from '../../../components/post/post-btns';
 
-const PostPage = ({params: {id}}: {params: {id: string}}) => {
-  const [post, setPost] = useState<null|PostProps>(null);
-  const [isOwner, setIsOwner] = useState(false);
-  const {data:session} = useSession();
-  const router = useRouter();
-  
-  async function getPost(): Promise<void> {
-    const response = await fetch(`/api/post/${id}`, {
-      method: 'GET'
-    });
-    const json = await response.json();
-    setPost(json);
-  };
-  
-  async function deletePost(): Promise<void> {
-    const res = await fetch(`/api/post/${id}`, {
-      method: 'DELETE',
-    });
 
-    if (res.status==200) {
-      router.push("/drafts");
-      router.refresh();
-    };
-  }
-  
-  async function publishPost(): Promise<void> {
-    const res = await fetch(`/api/publish/${id}`, {
-      method: 'PUT',
-    });
+async function getPost(postId: string) {
+  const post = await prisma.post.findUnique({
+    where: {
+      id: postId
+    },
+    include: {
+      author: {
+        select: { name: true, email: true, image: true },
+      },
+    },
+  });
 
-    if (res.status==200) router.push("/");
-  }
-  
-  useEffect(()=> {
-    getPost();
-  }, [])
+  return post
+}
 
-  useEffect(()=>{
-    if (post) {
-      setIsOwner(session?.user?.email === post.author?.email)
-    }
-  }, [post])
+const PostPage = async({params: {id}}: {params: {id: string}}) => {
+  const session = await getServerSession(authOptions);
+  const post = await getPost(id);
 
   return (
-    <div>
-      {isOwner&&<div>
-        <h2>{post.title} {!post.published&&"(Draft)"}</h2>
-        <p>By {post?.author?.name || 'Unknown author'}</p>
-        <ReactMarkdown>
-          {post.content}
-        </ReactMarkdown>
-      </div>}
-      {isOwner&&<div>
-        {
-          !post.published && (
-            <button onClick={() => publishPost()}>Publish</button>
-          )
-        }
-        {
-          (
-            <button onClick={() => deletePost()}>Delete</button>
-          )
-        }
-      </div>}
+    <div className='flex flex-col px-32 py-10'>
+      <div className='flex flex-col items-center fixed right-11'>
+        <Image className='rounded-full overflow-hidden' src={post.author.image} alt="user_image" width={100} height={100}/>
+        <span className='font-bold'>{post.author.name || 'Unknown author'}</span>
+      </div>
+      <PostArticle post={post}/>
+      <PostBtns isOwner={session?.user.email === post.author.email} isPublished={post.published} postId={id} />
     </div>
   );
 };
