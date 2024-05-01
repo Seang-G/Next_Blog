@@ -22,10 +22,10 @@ async function getUserInfo() {
 export default async function UserInfo() {
   const userInfo = await getUserInfo();
   return(
-    <div>
-      <div>{userInfo.name}</div>
-      <div>{userInfo.email}</div>
-      <Image src={userInfo.image} alt="user_image" width={100} height={100}/>
+    <div className="w-1/3 flex flex-col items-center gap-10 pt-20">
+      <Image src={userInfo.image} alt="user_image" width={250} height={250} className="overflow-hidden rounded-full"/>
+      <div className="font-bold text-lg">{userInfo.name}</div>
+      {/* <div>{userInfo.email}</div> */}
       
     </div>
   )

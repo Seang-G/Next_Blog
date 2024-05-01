@@ -10,8 +10,10 @@ async function getPosts() {
     include: {
       author: {
         select: {name: true, image: true}
-      }
-    }
+      },
+    },
+    orderBy: {id: 'desc'}
+
   });
 
   return posts;

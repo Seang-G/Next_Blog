@@ -11,7 +11,7 @@ export type PostProps = {
     email?: string;
     image?: string;
   }|null
-  content: string;
+  content?: string;
   published: boolean;
 };
 
@@ -22,7 +22,7 @@ const Post = ({ post }: { post: PostProps }) => {
       <div>
         <Link href={`/p/${post.id}`} className="text-4xl font-bold">{post.title}</Link>
         <ReactMarkdown className="text-xl pl-5 mt-2 opacity-20">
-          {post.content}
+          {post.content.slice(0, 300)}
         </ReactMarkdown>
       </div>
       <div className="flex flex-col justify-center items-center gap-3 min-w-32">

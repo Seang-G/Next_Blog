@@ -10,7 +10,7 @@ export default function PostBtns({isOwner, isPublished, postId}: {isOwner: boole
       method: 'DELETE',
     });
     if (res.status==200) {
-      router.back();
+      router.push("/");
       router.refresh();
     };
   }
@@ -20,7 +20,7 @@ export default function PostBtns({isOwner, isPublished, postId}: {isOwner: boole
       method: 'PUT',
     });
     if (res.status==200) {
-      router.back();
+      router.push("/");
       router.refresh();
     }
   }

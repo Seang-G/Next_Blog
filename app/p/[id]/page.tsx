@@ -17,14 +17,12 @@ async function getPost(postId: string) {
       },
     },
   });
-
   return post
 }
 
 const PostPage = async({params: {id}}: {params: {id: string}}) => {
   const session = await getServerSession(authOptions);
   const post = await getPost(id);
-  console.log(post.published)
 
   return (
     <div className='flex flex-col px-32 py-10'>
