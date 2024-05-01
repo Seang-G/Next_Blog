@@ -9,6 +9,7 @@ export type PostProps = {
   author: {
     name: string;
     email?: string;
+    image?: string;
   }|null
   content: string;
   published: boolean;
