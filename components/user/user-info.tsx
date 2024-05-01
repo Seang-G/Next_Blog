@@ -25,7 +25,7 @@ export default async function UserInfo() {
     <div>
       <div>{userInfo.name}</div>
       <div>{userInfo.email}</div>
-      <Image src={userInfo} alt="user_image" width={100} height={100}/>
+      <Image src={userInfo.image} alt="user_image" width={100} height={100}/>
       
     </div>
   )
