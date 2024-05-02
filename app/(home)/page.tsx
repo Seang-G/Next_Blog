@@ -1,6 +1,7 @@
-import Post from "../../components/post/post"
+import { Suspense } from "react";
+import Posts from "../../components/post/posts";
 import prisma from "../../lib/prisma"
-// import styles from "../../styles/home.module.css"
+import PostsLoading from "../../components/loading/posts-loading";
 
 export const revalidate = 10;
 
@@ -21,15 +22,12 @@ async function getPosts() {
 
 const Blog = async() => {
 
-  const posts = await getPosts();
-
   return (
     <div className="w-5/6 h-full my-10 mx-auto rounded-lg flex flex-col justify-start gap-4 p-10">
-      {posts.map((post) => (
-        <div key={post.id} className="flex h-[23%]">
-          <Post post={post}/>
-        </div>
-      ))}
+      <Suspense fallback={<PostsLoading />}>
+        {/* @ts-expect-error Server Component */}
+        <Posts getPosts={getPosts}/>
+      </Suspense>
     </div>
   )
 }

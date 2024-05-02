@@ -1,5 +1,5 @@
 import { SessionProvider } from "next-auth/react"
-import Header from "../components/header"
+import Header from "../components/header/header"
 import AuthSession from "../components/authSession"
 import "../styles/global.css"
 import { Gowun_Dodum } from "next/font/google"
@@ -23,10 +23,10 @@ export default function RootLayout({
       <head>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
       </head>
-      <body className={`${gowun.className} bg-gradient-to-r from-[#140F22] to-[#372960] min-h-full pt-20`}>
+      <body className={`${gowun.className} bg-gradient-to-r from-[#140F22] to-[#372960] h-full pt-20`}>
         <AuthSession>
-        <Header />
-        {children}
+          {children}
+          <Header />
         </AuthSession>
       </body>
     </html>
