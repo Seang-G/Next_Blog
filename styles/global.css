@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --theme-red: #f43f5e4d;
+  --theme-blue: #123eb86b;
+  --theme-yellow: #deef366b;
+  --theme-deepred: #e63b236b;
+  --theme-green: #23e65f6b;
+}
+
 html {
   box-sizing: border-box;
 }

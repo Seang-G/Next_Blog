@@ -3,7 +3,6 @@ import Post from "./post";
 
 export default async function Posts({getPosts}) {
   const posts = await getPosts();
-
   if (posts.length > 0){ 
     return(
       <div className="flex flex-col items-center">

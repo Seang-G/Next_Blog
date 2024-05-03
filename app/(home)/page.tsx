@@ -10,7 +10,7 @@ async function getPosts() {
     where: {published: true},
     include: {
       author: {
-        select: {name: true, image: true}
+        select: {name: true, image: true, color: true}
       },
     },
     orderBy: {id: 'desc'}

@@ -52,6 +52,7 @@ model User {
   email         String?@unique
   emailVerified DateTime?
   image         String?
+  color         String? @default("red")
   posts         Post[]
   accounts      Account[]
   sessions      Session[]
