@@ -12,7 +12,7 @@ export default function PostArticle({post}: {post:PostProps}) {
         </h2>
       </div>
       <hr />
-      <ReactMarkdown remarkPlugins={[remarkGfm]} className='text-lg'>{post.content}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} className='text-xl'>{post.content}</ReactMarkdown>
     </div>
   )
 }

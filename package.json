@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "npx prisma generate && WATCHPACK_POLLING=true next dev --experimental-https",
-    "build": "npx prisma generate next build",
+    "build": "npx prisma generate && next build",
     "start": "next start"
   },
   "keywords": [],
