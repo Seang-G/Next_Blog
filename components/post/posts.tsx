@@ -6,7 +6,7 @@ export default async function Posts({getPosts}) {
 
   if (posts.length > 0){ 
     return(
-      <div>
+      <div className="flex flex-col items-center">
         {posts.map(post=>{
           return(
             <Post key={post.id} post={post} />

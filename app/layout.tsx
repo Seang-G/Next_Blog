@@ -4,6 +4,8 @@ import AuthSession from "../components/authSession"
 import "../styles/global.css"
 import { Gowun_Dodum } from "next/font/google"
 import Loading from "./loading"
+import Image from "next/image"
+import backImg from "../.next/static/image/backImage.png"
 
 // export const metadata = {
 //   title: 'Next.js',
@@ -23,10 +25,13 @@ export default function RootLayout({
       <head>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
       </head>
-      <body className={`${gowun.className} bg-gradient-to-r from-[#140F22] to-[#372960] h-full pt-20`}>
+      
+      <body className={`${gowun.className} bg-gradient-to-r from-[#140F22] to-[#372960] pt-20`}>
         <AuthSession>
-          {children}
           <Header />
+          <div className='max-w-[1920px] mx-auto z-10'>
+            {children}
+          </div>
         </AuthSession>
       </body>
     </html>

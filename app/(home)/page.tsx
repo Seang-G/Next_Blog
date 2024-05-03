@@ -23,7 +23,7 @@ async function getPosts() {
 const Blog = async() => {
 
   return (
-    <div className="w-5/6 h-full my-10 mx-auto rounded-lg flex flex-col justify-start gap-4 p-10">
+    <div className="w-5/6 h-full mt-7 mx-auto rounded-lg flex flex-col justify-center gap-4 p-10">
       <Suspense fallback={<PostsLoading />}>
         {/* @ts-expect-error Server Component */}
         <Posts getPosts={getPosts}/>

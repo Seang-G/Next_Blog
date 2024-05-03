@@ -3,9 +3,9 @@ import { Suspense } from "react";
 import prisma from "../../../lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../lib/auth";
-import UserInfoLoading from "../../../components/loading/user-info-loading";
-import Posts from "../../../components/post/posts";
-import PostsLoading from "../../../components/loading/posts-loading";
+import UserInfoLoading from "../../../components/loading/user-info-loading-v";
+import UserPosts from "../../../components/user/user-posts";
+import UserPostsLoading from "../../../components/loading/user-posts-loading";
 
 async function getPosts() {
   const session = await getServerSession(authOptions);
@@ -27,7 +27,7 @@ export default async function UserPage({params:{name}}) {
   
 
   return(
-    <div className="h-[800px] w-[1900px] flex gap-10 pt-10">
+    <div className="mx-auto flex justify-center gap-10 pt-10">
       <div className='basis-1/4 pt-5'>
       <Suspense fallback={<UserInfoLoading />}>
         {/* @ts-expect-error Server Component */}
@@ -35,9 +35,9 @@ export default async function UserPage({params:{name}}) {
       </Suspense>
       </div>
       <div className="basis-3/4">
-        <Suspense fallback={<PostsLoading />}>
+        <Suspense fallback={<UserPostsLoading />}>
           {/* @ts-expect-error Server Component */}
-          <Posts getPosts={getPosts} />
+          <UserPosts name={name}/>
         </Suspense>
       </div>
     </div>

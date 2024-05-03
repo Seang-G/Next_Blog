@@ -20,7 +20,7 @@ module.exports = {
       aspectRatio: {
         '3/4': '3 / 4',
         '6/7':'6 / 7'
-      }
+      },
     },
   },
   plugins: [],

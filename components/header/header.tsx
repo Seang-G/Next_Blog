@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
@@ -16,23 +16,24 @@ const urlToName = {
   'p': "Public Feed",
   'create': "Write New",
   'drafts': "Drafts",
-  'user': "My Page"
+  'user': "User Page"
 }
 
 const josefinSans = Josefin_Sans({subsets:['latin']});
 
 const Header = () => {
-  const [pageName, setPageName] = useState("");
-  const pathname = usePathname();
+  // const [pageName, setPageName] = useState("");
+  // const pathname = usePathname();
 
-  useEffect(()=>{
-    setPageName(urlToName[pathname.split("/")[1]])
-  }, [pathname])
+  // useEffect(()=>{
+  //   setPageName(urlToName[pathname.split("/")[1]])
+  // }, [pathname])
 
   return (
     <div className='w-full h-20 backdrop-blur-sm bg-white bg-opacity-[4%] border-b-2 border-white border-opacity-10 grid grid-cols-3 place-items-center px-20 fixed top-0'>
-      <div className='w-full'><Link href={"/"} className={`${josefinSans.className} text-2xl w-fit`}>Next-Blog</Link></div>
-      <div className='text-center bg-gradient-to-r from-white to-[#F96262] text-transparent bg-clip-text text-4xl font-black'>{pageName}</div>
+      <div></div>
+      <div className='w-full text-center'><Link href={"/"} className={`${josefinSans.className} text-4xl w-fit font-black`}>Next-Blog</Link></div>
+      {/* <div className='text-center bg-gradient-to-r from-white to-[#F96262] text-transparent bg-clip-text text-4xl font-black'>{pageName}</div> */}
       <HeaderUser />
     </div>
   )

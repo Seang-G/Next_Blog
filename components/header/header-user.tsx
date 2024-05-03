@@ -3,10 +3,11 @@ import { getSession, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import HeaderUserLoading from "../loading/header-user-loading";
+import UserDefaultImage from "../svgs/user-default-image";
 
 export default function HeaderUser(){
-  
   const {data: session, status} = useSession();
+  
   
   if (status==='loading'){
     return(
@@ -35,7 +36,7 @@ export default function HeaderUser(){
       </div>}  
       {session?
       <Image className='rounded-full' src={session.user.image} alt='user_image' width={50} height={50}/>
-      :<div className='material-symbols-outlined'><span className='text-4xl'>account_circle</span></div> }
+      :<UserDefaultImage className="h-[50px] text-gray-400"/> }
     </div>
   )
 }
