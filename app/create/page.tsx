@@ -1,32 +1,36 @@
 "use client"
 
-import Router from 'next/router';
-import {useState} from 'react';
-// import styles from "../../styles/create.module.css"
+import {useEffect, useState} from 'react';
 import { useRouter } from 'next/navigation';
+import Loading from '../../components/loading/loader';
+import Button from '../../components/button';
+import Link from 'next/link';
 
 const WritePage = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [isCreating, setIsCreating] = useState(false);
   const router = useRouter();
 
-  const submitData = async (e) => {
-    e.preventDefault();
-    const body = { title, content };
-    const res = await fetch('/api/post', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-
-    if(res.status==200) {
-      router.push("/drafts")
-      router.refresh()
+  const submitData = async (title:string, content:string) => {
+    if(confirm("Are you sure you want to create this blog post?")){
+      setIsCreating(true);
+      const body = { title, content };
+      const res = await fetch('/api/post', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (res.status==200) {
+        router.push("/drafts");
+        router.refresh();
+        setIsCreating(false);
+      }
     }
   };
 
   return (
-    <form onSubmit={submitData} className='flex flex-col gap-1 py-14 px-20'>
+    <div className='flex flex-col gap-1 py-14 px-20'>
       <input
         autoFocus
         onChange={(e) => setTitle(e.target.value)}
@@ -39,18 +43,19 @@ const WritePage = () => {
         cols={50}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Content"
-        rows={24}
+        rows={18}
         value={content}
-        className='text-md p-3 rounded-b-xl bg-white bg-opacity-10'
+        className='text-xl text-md p-3 rounded-b-xl bg-white bg-opacity-10'
       />
       <div>
-        <input disabled={!content || !title} type="submit" value="Create" className='p-3 bg-emerald-500 bg-opacity-70 rounded-lg cursor-pointer hover:bg-opacity-100 mr-3 mt-5 font-bold'/>
+        <Button text='Create' className='p-3 bg-emerald-500 bg-opacity-70 rounded-lg cursor-pointer hover:bg-opacity-100 mr-3 mt-5 font-bold w-16 h-12' onClick={()=>submitData(title, content)} disabled={!content || !title}/>
         or&nbsp;
-        <a href="#" onClick={() => router.push('/')} className='text-rose-500 text-md text-opacity-70 hover:text-opacity-100'>
+        <Link href="/" className='text-rose-500 text-md text-opacity-70 hover:text-opacity-100'>
          Cancel
-        </a>
+        </Link>
+        {isCreating&&<Loading text='Creating'/>}
       </div>
-    </form>
+    </div>
   );
 };
 

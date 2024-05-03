@@ -1,9 +1,7 @@
 // import styles from "../../styles/drafts.module.css"
 import { getServerSession } from 'next-auth';
 import prisma from "../../lib/prisma";
-import Post from "../../components/post/post";
 import { authOptions } from "../../lib/auth";
-import PostBtns from '../../components/post/post-btns';
 import Posts from '../../components/post/posts';
 import { Suspense } from 'react';
 import PostsLoading from '../../components/loading/posts-loading';

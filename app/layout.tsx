@@ -3,7 +3,7 @@ import Header from "../components/header/header"
 import AuthSession from "../components/authSession"
 import "../styles/global.css"
 import { Gowun_Dodum } from "next/font/google"
-import Loading from "./loading"
+import Loading from "../components/loading/loader"
 import Image from "next/image"
 import backImg from "../.next/static/image/backImage.png"
 
@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${gowun.className} bg-gradient-to-r from-[#140F22] to-[#372960] pt-20`}>
         <AuthSession>
           <Header />
-          <div className='max-w-[1920px] mx-auto z-10'>
+          <div className='max-w-[1920px] mx-auto'>
             {children}
           </div>
         </AuthSession>
