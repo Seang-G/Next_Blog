@@ -15,7 +15,7 @@ async function getDrafts() {
     },
     include: {
       author: {
-        select: { name: true, image: true },
+        select: { name: true, image: true, color:true },
       },
     },
   });

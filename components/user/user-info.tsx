@@ -1,8 +1,5 @@
-import { getServerSession } from "next-auth";
 import Image from "next/image";
-import { authOptions } from "../../lib/auth";
 import prisma from "../../lib/prisma";
-import UserInfoLoading from "../loading/user-info-loading";
 
 async function getUserInfo(name:string) {
   name = decodeURI(name)
@@ -12,7 +9,7 @@ async function getUserInfo(name:string) {
     },
     select: {
       name: true,
-      email: true,
+      color: true,
       image: true
     }
   })

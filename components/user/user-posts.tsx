@@ -5,7 +5,12 @@ const getPosts = async(name:string) => {
   name = name.replace("%20", " ")
   const posts = prisma.post.findMany({
     where: {author:{name: name}, published:true},
-    select: {id:true, title:true, content:true},
+    select: {
+      author: {
+        select: {color:true}
+      },
+      id:true, title:true, content:true
+    },
     orderBy: {id:"desc"}
   })
 
