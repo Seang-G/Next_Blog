@@ -9,12 +9,12 @@ import Link from 'next/link';
 const EditPage = ({params:{id}}: {params:{id:string}}) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState("");
   const router = useRouter();
 
   const updatePost = async(title:string, content:string, postId:string) => {
     if (confirm("Are you sure you want to update this?")){
-      setIsLoading(true);
+      setIsLoading("Updating");
       const body = { title, content };
       const res = await fetch(`/api/post/${postId}`, {
         method: 'PUT',
@@ -24,19 +24,20 @@ const EditPage = ({params:{id}}: {params:{id:string}}) => {
       if (res.status==200) {
         router.push("/");
         router.refresh();
-        setIsLoading(false);
+        setIsLoading("");
       }
     }
   };
 
   const getPost = async(postId:string) => {
+    setIsLoading(" ");
     const res = await fetch(`/api/post/${postId}`, {
       method: 'get'
     });
     const json = await res.json();
-    console.log(json)
     setTitle(json.title);
     setContent(json.content);
+    setIsLoading("");
   }
 
   useEffect(()=>{
@@ -67,7 +68,7 @@ const EditPage = ({params:{id}}: {params:{id:string}}) => {
         <Link href="/" className='text-rose-500 text-md text-opacity-70 hover:text-opacity-100'>
          Cancel
         </Link>
-        {isLoading&&<Loading text='Updating'/>}
+        {isLoading.length>0&&<Loading text={isLoading}/>}
       </div>
     </div>
   );
