@@ -6,7 +6,7 @@ import PostBtns from '../../../components/post/post-btns';
 import UserSimpleLink from '../../../components/user/user-simple-link';
 
 
-export async function getPost(postId: string) {
+async function getPost(postId: string) {
   const post = await prisma.post.findUnique({
     where: {
       id: postId
