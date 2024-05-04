@@ -12,6 +12,7 @@ export type PostProps = {
     name: string;
     email?: string;
     image?: string;
+    color?: string;
   }|null
   content?: string;
   published?: boolean;
