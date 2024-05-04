@@ -22,3 +22,19 @@ export async function GET(req, {params: {id}}) {
   });
   return NextResponse.json(post);
 }
+
+export async function PUT(request: Request, {params: {id}}){
+  const req = await request.json();
+  const { title, content } = req;
+  const post = await prisma.post.update({
+    where: {
+      id: String(id),
+    },
+    data: {
+      title: title,
+      content: content
+    }
+  })
+
+  return NextResponse.json({}, {status: post.id?200:500});
+}
