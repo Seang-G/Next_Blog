@@ -35,7 +35,7 @@ export default function UserTheme({userName}:{userName:string}) {
     }
   };
 
-  if (session.user.name !== userName) return <div></div>
+  if (session?.user?.name !== userName) return <div></div>
 
   return (
     <div className="flex flex-col items-center gap-5">
