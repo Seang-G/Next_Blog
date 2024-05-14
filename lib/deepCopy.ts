@@ -1,4 +1,5 @@
 export function deepCopy(obj: any): any {
+  console.log(obj)
   if (obj === null || typeof obj !== 'object') {
     return obj;
   }
