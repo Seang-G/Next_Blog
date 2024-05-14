@@ -7,11 +7,7 @@ export const mdComponents = {
   ol: ({node, ...props}) => <ol className="list-decimal" {...props} />,
   a: ({node, ...props}) => <a className='text-blue-400 underline cursor-pointer hover:font-bold' {...props} />,
   blockquote: ({children, ...props}) => <blockquote className='pl-5 pb-5 border-l-2 border-l-gray-600' {...props}>{children}</blockquote>,
-  pre: ({children, ...props}) => {
-    const node = deepCopy(children)
-    node.props.className  = node.props.className + ' bg-opacity-0 text-white'
-    return <pre className='bg-gray-700 border-gray-500 border-2 p-5 rounded-md'>{node}</pre>
-  },
+  pre: ({children, ...props}) => <pre className='bg-gray-700 border-gray-500 border-2 p-5 rounded-md'>{children}</pre>,
   code: ({children, className, node, ...props}) => {
     const match = /language-(\w+)/.exec(className || '')
     return match ? (
@@ -23,7 +19,7 @@ export const mdComponents = {
         style={style}
       />
     ) : (
-      <code {...props} className={`${className} bg-rose-800  rounded-md px-1`}>
+      <code {...props} className={className}>
         {children}
       </code>
     )
