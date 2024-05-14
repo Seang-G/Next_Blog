@@ -9,7 +9,8 @@ module.exports = {
       colors: {
       },
       fontFamily: {
-        "Josefin": ["Josefin Sans", "sans-serif"]
+        "Josefin": ["Josefin Sans", "sans-serif"],
+        "code": ["Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace"]
       },
       keyframes: {
         spin: {

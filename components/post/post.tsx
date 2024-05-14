@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
 import UserInfo from "../user/user-info";
 import UserSimpleLink from "../user/user-simple-link";
+import remarkGfm from "remark-gfm";
+import Markdown from "react-markdown";
 // import styles from "../styles/post.module.css"
 
 export type PostProps = {
@@ -25,9 +26,9 @@ const Post = ({ post }: { post: PostProps }) => {
     <div className={`w-[90%] h-80 rounded-3xl py-5 px-10 flex justify-between mb-12 overflow-hidden shadow-xl`} style={{backgroundImage:`linear-gradient(to right, var(--theme-${post.author.color}), #0000004d)`}}>
       <div className="basis-[90%]">
         <Link href={`/p/${post.id}`} className="text-4xl font-bold">{post.title}</Link>
-        <ReactMarkdown className="text-xl pl-5 mt-10 opacity-70">
+        <div className="text-xl pl-5 mt-10 opacity-70">
           {slicedContent+(slicedContent.length===300?"...":"")}
-        </ReactMarkdown>
+        </div>
       </div>
       
       <div className="basis-[10%]">

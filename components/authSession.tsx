@@ -8,8 +8,6 @@ type props = {
 
 export default function AuthSession({children}: props) {
   return(
-    <SessionProvider>
-      {children}
-    </SessionProvider>
+    <SessionProvider children={children} />
   )
 }
