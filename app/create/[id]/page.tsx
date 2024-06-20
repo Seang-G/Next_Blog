@@ -23,9 +23,13 @@ const EditPage = ({params:{id}}: {params:{id:string}}) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
-      if (res.status==200) {
+      if (res.status===200) {
         router.push("/");
         router.refresh();
+        setIsLoading("");
+      } else if (res.status===403) {
+        alert("Wrong Access.");
+        router.push("/");
         setIsLoading("");
       }
     }

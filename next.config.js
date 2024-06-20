@@ -1,5 +1,13 @@
+const { hostname } = require("os");
+
 module.exports = {
   images: {
-    domains: ['avatars.githubusercontent.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        pathname: '**'
+      }
+    ]
   },
 }
